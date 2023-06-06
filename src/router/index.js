@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import DashBoard from '@/views/home/DashBoard'
 import GridSystem from '@/views/businessindex/GridSystem'
-import RecommendedStockByCompany from '@/views/research/RecommendedStockByCompany'
+import ResearchPage from '@/views/research/ResearchPage.vue';
 
 
 
@@ -21,13 +21,13 @@ const routes = [
     },
     {
         path: '/research',
-        name: 'RecommendedStockByCompany',
-        component: RecommendedStockByCompany
+        name: 'ResearchPage',
+        component: ResearchPage
     }
 ]
 
 const router = new VueRouter({
-    mode : 'history',
+    mode: 'history',
     routes
 })
 
