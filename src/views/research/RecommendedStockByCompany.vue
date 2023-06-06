@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import { getHeapCodeStatistics } from 'v8';
+
 export default {
   data() {
     const submenuOptions = [
@@ -1209,6 +1211,15 @@ export default {
       searchKeywordBySelectedSubmenu: searchKeywordBySelectedSubmenu,
     };
   },
+  // created() {
+  //   this.$watch(
+  //     () => { this.$route.params },
+  //     () => {
+  //       this.fetchData()
+  //     },
+  //     { immediate: true }
+  //   )
+  // },
   methods: {
     selectMenu(index) {
       this.selectedMenu = this.menus[index];
@@ -1222,6 +1233,15 @@ export default {
       return value != null &&
         search != null && item.stock_company === search;
     },
+    // fetchData() {
+    //   this.error = this.recommendedStocks = null;
+    //   this.loading = true;
+    //   const url = "http://localhost:8000/api/v1/recommended-stocks";
+
+    //   fetch(url).then(response => response.json()).then(result => {
+    //     this.recommendedStocks = result;
+    //   });
+    // }
   },
 };
 </script>
