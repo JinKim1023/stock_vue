@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 
 export default {
   data() {
@@ -1209,15 +1210,9 @@ export default {
       searchKeywordBySelectedSubmenu: searchKeywordBySelectedSubmenu,
     };
   },
-  // created() {
-  //   this.$watch(
-  //     () => { this.$route.params },
-  //     () => {
-  //       this.fetchData()
-  //     },
-  //     { immediate: true }
-  //   )
-  // },
+  created: function () {
+    this.fetchData();
+  },
   methods: {
     selectMenu(index) {
       this.selectedMenu = this.menus[index];
@@ -1243,15 +1238,16 @@ export default {
     toPriceString(price) {
       return price.toLocaleString('ko-KR', { style: 'currency', currency: 'KRW' });
     },
-    // fetchData() {
-    //   this.error = this.recommendedStocks = null;
-    //   this.loading = true;
-    //   const url = "http://localhost:8000/api/v1/recommended-stocks";
-
-    //   fetch(url).then(response => response.json()).then(result => {
-    //     this.recommendedStocks = result;
-    //   });
-    // }
+    getRecommendedStocks() {
+      this.error = this.recommendedStocks = null;
+      this.loading = true;
+      const url = "http://localhost:8000/api/v1/recommended_stocks";
+      axios
+        .get(url)
+        .then((result) => {
+          this.recommendedStocks = result.data;
+        });
+    }
   },
 };
 </script>
