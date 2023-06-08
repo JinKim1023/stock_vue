@@ -1211,7 +1211,7 @@ export default {
     };
   },
   created: function () {
-    this.fetchData();
+    this.getRecommendedStocks();
   },
   methods: {
     selectMenu(index) {
